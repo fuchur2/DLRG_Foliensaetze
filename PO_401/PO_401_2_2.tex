@@ -1,9 +1,11 @@
-% Latex-Vorlagen von Johannes Pieper, diese wurden minimal angepasst um der Ordnerstruktur gerecht zu werden
 
-\documentclass[notes]{beamer}
+
+%\documentclass{beamer} % erzeugt eine Präsentation ohne Notizen
+\documentclass[notes]{beamer} % erzeugt eine Präsentation mit Notizen
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 
+% Dieser Teil ermöglicht die Einbindung der Latex-Vorlage aus einem gemeinsamen Ordner. Bitte nicht verändern!
 \makeatletter
 \def\beamer@calltheme#1#2#3{%
 	\def\beamer@themelist{#2}
@@ -14,7 +16,9 @@
 	\def\beamer@themelocation{#1}
 }
 \def\beamer@themelocation{}
+% Hier endet der Teil der die Einbindung betrifft
 
+% Latex-Vorlagen von Johannes Pieper, diese wurden minimal angepasst um der Ordnerstruktur gerecht zu werden
 \usefolder{../common/}
 \usetheme{DLRG}
 
@@ -27,6 +31,7 @@
 
 \begin{document}
 	
+	% Die Farbe der Überschrift (in eckigen Klammern) ist so zu wählen, dass sie auf dem Hintergrund gut erkannt wird.
 	\dlrgTitlepage[black]{../common/bg_wrd}
 	
 	\begin{frame}{Inhaltsverzeichnis}
@@ -34,6 +39,8 @@
 		\tableofcontents[ 
 		sectionstyle=hide, 
 		subsectionstyle=show,]
+		
+		Gesamtzeit: 83 min
 		
 	\end{frame}		
 	

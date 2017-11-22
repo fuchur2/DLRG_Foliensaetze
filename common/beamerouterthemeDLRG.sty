@@ -12,7 +12,7 @@
 \setbeamercolor{title}{fg=#1}
 \@titlepage=1
 \ifthenelse{\equal{#2}{}}{
-\usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{bg_strand}}
+\usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{../common/bg_strand}}
 }{
 \usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{#2}}
 }
@@ -40,10 +40,13 @@
 \setbeamercolor*{section in head/foot}{parent=palette tertiary}
 \setbeamercolor*{subsection in head/foot}{parent=palette primary}
 
-\setbeamerfont{frametitle}{parent=structure,size=\LARGE,series=\bfseries}
+\setbeamerfont{frametitle}{parent=structure,size=\Large,series=\bfseries}
 \setbeamerfont{title}{parent=structure,size=\LARGE,series=\bfseries}
-\setbeamertemplate{frametitle}{\vspace{0.5cm}\insertframetitle}
-\setbeamerfont{link in foot}{size=\normalsize}
+\setbeamertemplate{frametitle}{\parbox[c][6ex]{\linewidth}{\insertframetitle}}
+\setbeamerfont{link in foot}{size=\small}
+
+\setbeamertemplate{section in toc}[circle]
+\setbeamertemplate{subsection in toc}{\parbox[b]{1.5em}{\color{red}\inserttocsubsectionnumber.} \parbox[t]{\dimexpr\textwidth-2em\relax}{\inserttocsubsection}\par}
 
 \pgfdeclareimage[height=0.34cm]{dlrg_wortmarke}{../common/dlrg_wortmarke}
 
@@ -51,7 +54,7 @@
 	\begin{tikzpicture}[remember picture,overlay]%
 		\filldraw[red] ($(current page.south west) + (0,1.16)$) rectangle ($(current page.south east) + (0,0.56)$);
 		\node [xshift=-0.84cm,yshift=.68cm, above left, anchor=base east] at (current page.south east) {\pgfuseimage{dlrg_wortmarke}};
-		\node [xshift=0.66cm,yshift=.68cm, above right, anchor=base west] at (current page.south west) {\usebeamercolor[fg]{link in foot}\usebeamerfont{link in foot}\get@footerlink{}};
+		\node [xshift=0.55cm,yshift=.72cm, above right, anchor=base west] at (current page.south west) {\usebeamercolor[fg]{link in foot}\usebeamerfont{link in foot}\get@footerlink{}};
 	\end{tikzpicture}%
   \leavevmode%
   
