@@ -1,0 +1,104 @@
+% Copyright 2014 by Johannes Pieper
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\newcount\@titlepage
+\@titlepage=0
+
+\newcommand{\dlrgTitlepage}[2][black]{{
+\setbeamercolor{title}{fg=#1}
+\@titlepage=1
+\ifthenelse{\equal{#2}{}}{
+\usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{bg_strand}}
+}{
+\usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{#2}}
+}
+\begin{frame}
+	\titlepage
+\end{frame}
+\@titlepage=0
+}}
+
+%Markro zum setzten des Links im Footer
+\def\footerLink#1{\gdef\@footerLink{#1}}
+
+\newcommand{\get@footerlink}{
+	\ifthenelse{\isundefined{\@footerLink}}%
+		{\href{www.dlrg.de}{www.dlrg.de}}%
+		{\href{\@footerLink}{\@footerLink}}%
+}
+
+\mode<presentation>
+
+\setbeamercolor*{author in head/foot}{parent=palette tertiary}
+\setbeamercolor*{title in head/foot}{parent=palette secondary}
+\setbeamercolor*{date in head/foot}{parent=palette primary}
+
+\setbeamercolor*{section in head/foot}{parent=palette tertiary}
+\setbeamercolor*{subsection in head/foot}{parent=palette primary}
+
+\setbeamerfont{frametitle}{parent=structure,size=\LARGE,series=\bfseries}
+\setbeamerfont{title}{parent=structure,size=\LARGE,series=\bfseries}
+\setbeamertemplate{frametitle}{\vspace{0.5cm}\insertframetitle}
+\setbeamerfont{link in foot}{size=\normalsize}
+
+\pgfdeclareimage[height=0.34cm]{dlrg_wortmarke}{../common/dlrg_wortmarke}
+
+\defbeamertemplate*{footline}{dlrg theme}{
+	\begin{tikzpicture}[remember picture,overlay]%
+		\filldraw[red] ($(current page.south west) + (0,1.16)$) rectangle ($(current page.south east) + (0,0.56)$);
+		\node [xshift=-0.84cm,yshift=.68cm, above left, anchor=base east] at (current page.south east) {\pgfuseimage{dlrg_wortmarke}};
+		\node [xshift=0.66cm,yshift=.68cm, above right, anchor=base west] at (current page.south west) {\usebeamercolor[fg]{link in foot}\usebeamerfont{link in foot}\get@footerlink{}};
+	\end{tikzpicture}%
+  \leavevmode%
+  
+  \hbox{%
+	\begin{beamercolorbox}[wd=.66cm,ht=3ex,dp=1ex,left]{}%
+	\end{beamercolorbox}
+  \begin{beamercolorbox}[wd=3.83cm,ht=3ex,left]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshorttitle
+    \vspace{2pt}
+    \newline
+    \insertshortdate
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=3.83cm,ht=3ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshortauthor
+    \vspace{2pt}
+    \newline
+    \insertinstitute
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=3.83cm,ht=3ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot} Seite \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+    \newline
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\defbeamertemplate*{headline}{dlrg theme}{
+	\ifnum \@titlepage=0
+	\begin{tikzpicture}[remember picture,overlay]%
+		\draw[thick, red] ($(current page.north west) - (0,1.5)$) -- ($(current page.north east) - (0,1.5)$);
+% 		\foreach \i in {0,1,2,...,14} {
+% 			\draw ($(current page.north west) + (\i,0)$) -- ($(current page.north west) + (\i,-0.2)$);
+% 			\draw ($(current page.north west) + (\i+0.5,0)$) -- ($(current page.north west) + (\i+0.5,-0.1)$);
+% 
+% 			\draw ($(current page.north west) + (0,-\i)$) -- ($(current page.north west) + (0.2,-\i)$);
+% 			\draw ($(current page.north west) + (0,-\i-0.5)$) -- ($(current page.north west) + (0.1,-\i-0.5)$);
+% 		}
+	\end{tikzpicture}%
+	\fi
+}%
+
+\defbeamertemplate*{title page}{customized} {
+	\vspace{-4.9cm}
+	\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+  \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+}
+
+\setbeamersize{text margin left=0.66cm,text margin right=0.66cm}
+
+\mode
+<all>

@@ -1,12 +1,24 @@
-\documentclass[]{beamer}
+% Latex-Vorlagen von Johannes Pieper, diese wurden minimal angepasst um der Ordnerstruktur gerecht zu werden
+
+\documentclass[notes]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 
-\usepackage{listings}
+\makeatletter
+\def\beamer@calltheme#1#2#3{%
+	\def\beamer@themelist{#2}
+	\@for\beamer@themename:=\beamer@themelist\do
+	{\usepackage[{#1}]{\beamer@themelocation/#3\beamer@themename}}}
 
+\def\usefolder#1{
+	\def\beamer@themelocation{#1}
+}
+\def\beamer@themelocation{}
+
+\usefolder{../common/}
 \usetheme{DLRG}
 
-\title{PO 421 Prüfungsvorbereitung}
+\title{PO 421}
 \subtitle{}
 \author{Torben Mehner}
 \institute{Bezirk Karlsruhe}
@@ -15,13 +27,12 @@
 
 \begin{document}
 	
-\dlrgTitlepage[white]{bg_strand}
+\dlrgTitlepage[yellow]{../common/bg_strand}
 
 \section{Einheitliche Führung im Einsatz}
 \subsection{Allgemeines}
 
-\begin{frame}{\secname}
-\framesubtitle{\subsecname}
+\begin{frame}{\subsecname}
 
 %Bilder von Feuerwehr, DRK, DLRG in Führungsuniform
 
@@ -35,8 +46,7 @@ Einheitliche...
 
 \end{frame}
 
-\begin{frame}{\secname}
-\framesubtitle{\subsecname}
+\begin{frame}{\subsecname}
 
 \begin{itemize}
 	\item Entwicklung aus dem KatSchutz
@@ -46,8 +56,7 @@ Einheitliche...
 \end{frame}
 
 \subsection{Bedeutung der Einsatzleitung}
-\begin{frame}{\secname}
-\framesubtitle{\subsecname}
+\begin{frame}{\subsecname}
 
 Einsatzleitung
 \begin{itemize}

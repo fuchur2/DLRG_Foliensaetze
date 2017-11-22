@@ -1,0 +1,97 @@
+% Latex-Vorlagen von Johannes Pieper, diese wurden minimal angepasst um der Ordnerstruktur gerecht zu werden
+
+\documentclass[notes]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\makeatletter
+\def\beamer@calltheme#1#2#3{%
+	\def\beamer@themelist{#2}
+	\@for\beamer@themename:=\beamer@themelist\do
+	{\usepackage[{#1}]{\beamer@themelocation/#3\beamer@themename}}}
+
+\def\usefolder#1{
+	\def\beamer@themelocation{#1}
+}
+\def\beamer@themelocation{}
+
+\usefolder{../common/}
+\usetheme{DLRG}
+
+\title{PO 401}
+\subtitle{Teil 2: Einsatzabläufe verstehen}
+\author{Torben Mehner}
+\institute{Bezirk Karlsruhe}
+\date{\today}
+\footerLink{bez-karlsruhe.dlrg.de}
+
+\begin{document}
+	
+	\dlrgTitlepage[black]{../common/bg_wrd}
+	
+	\begin{frame}{Inhaltsverzeichnis}
+		
+		\tableofcontents[ 
+		sectionstyle=hide, 
+		subsectionstyle=show,]
+		
+	\end{frame}		
+	
+	\section{Einsatzabläufe verstehen}
+	\subsection{Struktur im stationären Wasserrettungsdienst}
+	\begin{frame}{\subsecname}
+		
+		Text...
+		
+	\end{frame}
+	\note{Vorgesehene Zeit: 10 min}
+
+	\subsection{Struktur im mobilen Wasserrettungsdienst und in der	Gefahrenabwehr}
+	\begin{frame}{\subsecname}
+		
+		Text...
+		
+	\end{frame}
+	\note{Vorgesehene Zeit: 10 min}	
+	
+	\subsection{Lage}
+	\begin{frame}{\subsecname}
+		
+		Text...
+		
+	\end{frame}
+	\note{Vorgesehene Zeit: 20 min}
+
+	\subsection{Führungsvorgang}
+	\begin{frame}{\subsecname}
+		
+		Text...
+		
+	\end{frame}
+	\note{Vorgesehene Zeit: 15 min}
+
+	\subsection{Meldungen}
+	\begin{frame}{\subsecname}
+		
+		Text...
+		
+	\end{frame}
+	\note{Vorgesehene Zeit: 20 min}
+
+	\subsection{Befehl}
+	\begin{frame}{\subsecname}
+		
+		Text...
+		
+	\end{frame}
+	\note{Vorgesehene Zeit: 5 min}
+
+	\subsection{Führungsstile}
+	\begin{frame}{\subsecname}
+		
+		Text...
+		
+	\end{frame}
+	\note{Vorgesehene Zeit: 3 min}
+	
+\end{document}
